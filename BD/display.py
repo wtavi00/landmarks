@@ -27,6 +27,3 @@ for division, places in destination_bd.items():
         print(f"  - {place}: {coords}")
 
 
-
-print("After this another project states with shorting")
-
