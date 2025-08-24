@@ -44,15 +44,14 @@ def main():
 
     print("\n--- State Boundary Test ---")
     
-    # Load states
     states = load_states_from_csv("states.csv")
 
     # Example coordinate tests
-    print(search(32.154106, -85.330811, states))   # AL
-    print(search(32.904956, -104.106445, states))  # NM
-    print(search(33.406942, -111.906281, states))  # AZ
-    print(search(44.018046, -92.467569, states))   # MN
-    print(search(40.2282, -89.1234, states))       # Should find a state
+    print(search(32.154106, -85.330811, states))
+    print(search(32.904956, -104.106445, states))
+    print(search(33.406942, -111.906281, states))
+    print(search(44.018046, -92.467569, states))
+    print(search(40.2282, -89.1234, states))
 
     for state, coords in states.items():
         print(f"{state}: {len(coords)} boundary points")
