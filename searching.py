@@ -22,3 +22,41 @@ def findstate(lat, lon):
             break
 
     return state
+
+
+def search(lat, lon, states):
+    """Return which state a point belongs to."""
+    for state, coords in states.items():
+        if point_in_polygon(lat, lon, coords):
+            return f"Found in {state}"
+    return "Found None"
+
+
+
+# --------- Example Usage ----------
+def main():
+    # Load landmarks
+    landmarks = load_destinations_from_csv("states.csv")
+    for division, places in landmarks.items():
+        print(f"{division}:")
+        for place, coords in places.items():
+            print(f"  - {place}: {coords}")
+
+    print("\n--- State Boundary Test ---")
+    
+    # Load states
+    states = load_states_from_csv("states.csv")
+
+    # Example coordinate tests
+    print(search(32.154106, -85.330811, states))   # AL
+    print(search(32.904956, -104.106445, states))  # NM
+    print(search(33.406942, -111.906281, states))  # AZ
+    print(search(44.018046, -92.467569, states))   # MN
+    print(search(40.2282, -89.1234, states))       # Should find a state
+
+    for state, coords in states.items():
+        print(f"{state}: {len(coords)} boundary points")
+
+
+if __name__ == "__main__":
+    main()
